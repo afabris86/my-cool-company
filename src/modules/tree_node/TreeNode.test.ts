@@ -4,7 +4,7 @@ describe("TreeNode", () => {
   let node: TreeNode;
 
   beforeEach(() => {
-    node = new TreeNode("CEO");
+    node = new TreeNode("CEO", 0);
   });
 
   describe("getId", () => {
@@ -27,7 +27,7 @@ describe("TreeNode", () => {
 
   describe("addChild", () => {
     it("adds child to a node", () => {
-      const child = new TreeNode("VP");
+      const child = new TreeNode("VP", 1);
 
       node.addChild(child);
 

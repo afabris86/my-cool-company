@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const TreeNode_1 = __importDefault(require("../tree_node/TreeNode"));
 class CompanyTree {
     constructor() {
-        this.root = new TreeNode_1.default("Mr Ceo");
+        this.root = new TreeNode_1.default("Mr Ceo", 0);
     }
     static getInstance() {
         if (this.instance) {
@@ -28,14 +28,15 @@ class CompanyTree {
     // reference for find:  https://www.30secondsofcode.org/js/s/data-structures-tree/
     find(id) {
         for (let node of this.preOrderTraversal()) {
-            if (node.getId() === id)
+            if (node.getId() === id) {
                 return node;
+            }
         }
     }
-    insert(parentNodeId, name) {
+    insert({ parentNodeId, nodeId, name }) {
         for (let node of this.preOrderTraversal()) {
             if (node.getId() === parentNodeId) {
-                node.addChild(new TreeNode_1.default(name, parentNodeId));
+                node.addChild(new TreeNode_1.default(name, nodeId, parentNodeId));
                 return true;
             }
         }

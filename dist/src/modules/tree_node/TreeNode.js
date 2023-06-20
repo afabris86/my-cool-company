@@ -1,9 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 class TreeNode {
-    constructor(name, parentNodeId) {
+    constructor(name, id, parentNodeId) {
         this.name = name;
-        this.id = Math.random();
+        this.id = id;
         this.children = [];
         this.parentNodeId = parentNodeId;
     }

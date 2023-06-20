@@ -2,21 +2,12 @@ import { Request, Response, NextFunction } from "express";
 
 import CompanyTree from "../modules/company_tree/CompanyTree";
 
-export const getChildrenByNodeId = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+export const getChildrenByNodeId = async (req: Request, res: Response) => {
   const nodeId = parseInt(req.params.id);
 
-  try {
-    const treeNode = await CompanyTree.getInstance().find(nodeId);
+  const treeNode = CompanyTree.getInstance().find(nodeId);
 
-    const children = treeNode?.getChildren() || [];
+  const children = treeNode?.getChildren() || [];
 
-    res.json({ children: children });
-  } catch (err) {
-    console.error(`Error finding node id ${nodeId}`, err);
-    next(err);
-  }
+  res.send({ children: children });
 };

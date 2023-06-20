@@ -14,16 +14,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getChildrenByNodeId = void 0;
 const CompanyTree_1 = __importDefault(require("../modules/company_tree/CompanyTree"));
-const getChildrenByNodeId = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+const getChildrenByNodeId = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const nodeId = parseInt(req.params.id);
-    try {
-        const treeNode = yield CompanyTree_1.default.getInstance().find(nodeId);
-        const children = (treeNode === null || treeNode === void 0 ? void 0 : treeNode.getChildren()) || [];
-        res.json({ children: children });
-    }
-    catch (err) {
-        console.error(`Error finding node id ${nodeId}`, err);
-        next(err);
-    }
+    const treeNode = CompanyTree_1.default.getInstance().find(nodeId);
+    const children = (treeNode === null || treeNode === void 0 ? void 0 : treeNode.getChildren()) || [];
+    res.send({ children: children });
 });
 exports.getChildrenByNodeId = getChildrenByNodeId;

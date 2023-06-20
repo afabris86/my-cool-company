@@ -1,12 +1,18 @@
 import TreeNode from "../tree_node/TreeNode";
 
+interface InsertProps {
+  parentNodeId: number;
+  nodeId: number;
+  name: string;
+}
+
 class CompanyTree {
   private static instance: CompanyTree;
 
   private root: TreeNode;
 
   private constructor() {
-    this.root = new TreeNode("Mr Ceo");
+    this.root = new TreeNode("Mr Ceo", 0);
   }
 
   static getInstance() {
@@ -31,14 +37,16 @@ class CompanyTree {
   // reference for find:  https://www.30secondsofcode.org/js/s/data-structures-tree/
   find(id: number): TreeNode | undefined {
     for (let node of this.preOrderTraversal()) {
-      if ((node as TreeNode).getId() === id) return node;
+      if ((node as TreeNode).getId() === id) {
+        return node;
+      }
     }
   }
 
-  insert(parentNodeId: number, name: string) {
+  insert({ parentNodeId, nodeId, name }: InsertProps) {
     for (let node of this.preOrderTraversal()) {
       if ((node as TreeNode).getId() === parentNodeId) {
-        (node as TreeNode).addChild(new TreeNode(name, parentNodeId));
+        (node as TreeNode).addChild(new TreeNode(name, nodeId, parentNodeId));
         return true;
       }
     }

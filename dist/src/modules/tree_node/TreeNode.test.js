@@ -7,7 +7,7 @@ const TreeNode_1 = __importDefault(require("./TreeNode"));
 describe("TreeNode", () => {
     let node;
     beforeEach(() => {
-        node = new TreeNode_1.default("CEO");
+        node = new TreeNode_1.default("CEO", 0);
     });
     describe("getId", () => {
         it("returns the node id", () => {
@@ -26,7 +26,7 @@ describe("TreeNode", () => {
     });
     describe("addChild", () => {
         it("adds child to a node", () => {
-            const child = new TreeNode_1.default("VP");
+            const child = new TreeNode_1.default("VP", 1);
             node.addChild(child);
             expect(node.getChildren()).toEqual([child]);
         });

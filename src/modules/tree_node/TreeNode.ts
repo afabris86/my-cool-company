@@ -4,9 +4,9 @@ class TreeNode {
   private children: TreeNode[];
   private parentNodeId: number | undefined;
 
-  constructor(name: string, parentNodeId?: number) {
+  constructor(name: string, id: number, parentNodeId?: number) {
     this.name = name;
-    this.id = Math.random();
+    this.id = id;
     this.children = [];
     this.parentNodeId = parentNodeId;
   }
