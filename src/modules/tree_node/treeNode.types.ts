@@ -1,17 +1,18 @@
 import { Department } from "../department/department.types";
 import { ProgrammingLanguage } from "../programming_language/programmingLanguage.types";
 
-interface Node {
+export interface TreeNode {
   id: number;
   name: string;
   parent_node: Node;
   height: number;
+  children: Node[];
 }
 
-interface Manager extends Node {
+export interface Manager extends TreeNode {
   department: Department;
 }
 
-interface Developer extends Node {
+export interface Developer extends TreeNode {
   programming_language: ProgrammingLanguage;
 }
