@@ -2,11 +2,13 @@ class TreeNode {
   private name: string;
   private id: number;
   private children: TreeNode[];
+  private parentNodeId: number | undefined;
 
-  constructor(name: string) {
+  constructor(name: string, parentNodeId?: number) {
     this.name = name;
     this.id = Math.random();
     this.children = [];
+    this.parentNodeId = parentNodeId;
   }
 
   addChild(child: TreeNode) {
@@ -23,6 +25,10 @@ class TreeNode {
 
   getChildren() {
     return this.children;
+  }
+
+  getParentNodeId() {
+    return this.parentNodeId;
   }
 }
 
