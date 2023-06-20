@@ -19,7 +19,7 @@ class CompanyTree {
   }
 
   // reference for preOrderTraversal:  https://www.30secondsofcode.org/js/s/data-structures-tree/
-  *preOrderTraversal(node = this.root) {
+  *preOrderTraversal(node = this.root): Generator<TreeNode | undefined> {
     yield node;
     const children = node.getChildren();
     if (children.length) {
@@ -29,14 +29,13 @@ class CompanyTree {
     }
   }
   // reference for find:  https://www.30secondsofcode.org/js/s/data-structures-tree/
-  find(id: number): TreeNode {
+  find(id: number): TreeNode | undefined {
     for (let node of this.preOrderTraversal()) {
       if ((node as TreeNode).getId() === id) return node;
     }
-    throw new Error("Node not found");
   }
 
-  insert(parentNodeId, name) {
+  insert(parentNodeId: number, name: string) {
     for (let node of this.preOrderTraversal()) {
       if ((node as TreeNode).getId() === parentNodeId) {
         (node as TreeNode).addChild(new TreeNode(name, parentNodeId));

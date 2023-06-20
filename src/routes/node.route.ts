@@ -1,8 +1,7 @@
-import CompanyTree from "../modules/company_tree/CompanyTree";
-import { getChildrenByNodeId } from "../controllers/node.controller";
-import { TreeNode } from "../modules/tree_node/treeNode.types";
+import express from "express";
 
-const express = require("express");
+import { getChildrenByNodeId } from "../controllers/node.controller";
+
 const router = express.Router();
 
 /* GET node children */
@@ -18,4 +17,4 @@ router.patch("/nodes/:id", () => {
   // TODO
 });
 
-module.exports = router;
+export default router;

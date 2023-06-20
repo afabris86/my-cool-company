@@ -1,5 +1,5 @@
 import { ProgrammingLanguage } from "../programming_language/programmingLanguage.types";
-import { TreeNode } from "../tree_node/TreeNode";
+import TreeNode from "../tree_node/TreeNode";
 
 export class Developer extends TreeNode {
   programming_language: ProgrammingLanguage;
@@ -9,6 +9,10 @@ export class Developer extends TreeNode {
   }
 
   addChild(child: Developer): void {
-    this.children.push(child);
+    super.addChild(child);
+  }
+
+  getProgrammingLanguage() {
+    this.programming_language;
   }
 }
