@@ -29,11 +29,11 @@ class CompanyTree {
     }
   }
   // reference for find:  https://www.30secondsofcode.org/js/s/data-structures-tree/
-  find(id: number) {
+  find(id: number): TreeNode {
     for (let node of this.preOrderTraversal()) {
       if ((node as TreeNode).getId() === id) return node;
     }
-    return undefined;
+    throw new Error("Node not found");
   }
 
   insert(parentNodeId, name) {
